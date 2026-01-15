@@ -186,6 +186,8 @@ body {
     background-size: 200% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
     background-clip: text;
     animation: rainbow-slide 3s linear infinite;
     font-weight: bold;

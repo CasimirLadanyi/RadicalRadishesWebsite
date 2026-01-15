@@ -225,6 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(createSparkle, 3000);
 
     // Konami Code Easter Egg (Up, Up, Down, Down, Left, Right, Left, Right, B, A)
+    // Note: Press arrow keys and then lowercase 'b' and 'a' keys
     let konamiCode = [];
     const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     
@@ -253,12 +254,15 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show message
         showRadicalAlert('🎉🦄 ULTRA RADICAL MODE ACTIVATED! 🦄🎉\n\nYou found the secret! Everything is now EXTRA funky! 🌈✨');
 
-        // Add more sparkles
-        const sparkleInterval = setInterval(createSparkle, 500);
+        // Add more sparkles with proper scope
+        let sparkleInterval = setInterval(createSparkle, 500);
         
         // Stop after 10 seconds
         setTimeout(() => {
-            clearInterval(sparkleInterval);
+            if (sparkleInterval) {
+                clearInterval(sparkleInterval);
+                sparkleInterval = null;
+            }
             document.body.style.animation = '';
         }, 10000);
     }
